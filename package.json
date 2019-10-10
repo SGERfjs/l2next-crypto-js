@@ -1,0 +1,31 @@
+{
+  "name": "lineage-crypto-js",
+  "version": "0.1.0",
+  "description": "Node.js wrapper for LineageCrypto C++ library",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm run compile",
+    "compile": "cmake-js compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/one-thunder/lineage-crypto-js.git"
+  },
+  "keywords": [
+    "LineageCrypto",
+    "Nodejs",
+    "npm",
+    "Lineage2"
+  ],
+  "author": "Alexei Gaidulean",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/one-thunder/lineage-crypto-js/issues"
+  },
+  "homepage": "https://github.com/one-thunder/lineage-crypto-js#readme",
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "cmake-js": "^6.0.0",
+    "nan": "^2.14.0"
+  }
+}
