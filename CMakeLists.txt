@@ -28,7 +28,7 @@ set(LIB_NAME L2NextCrypto.lib)
 # Add L2NextCrypto dependency
 ExternalProject_Add(L2NextCrypto
   GIT_REPOSITORY https://github.com/ThunderstormPro/l2next-crypto.git
-  GIT_TAG v.0.1.0
+  GIT_TAG v.0.1.1
   PREFIX ${CMAKE_CURRENT_BINARY_DIR}/L2NextCrypto
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/External/tmp/L2NextCrypto

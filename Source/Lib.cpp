@@ -1,4 +1,3 @@
-#include "Crypto/Crypto.h"
 #include <nan.h>
 
 using v8::FunctionTemplate;
