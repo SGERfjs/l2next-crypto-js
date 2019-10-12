@@ -1,1 +1,1 @@
-module.exports = require('bindings')('LineageCryptoJS');
+module.exports = require('bindings')('L2NextCryptoJS');

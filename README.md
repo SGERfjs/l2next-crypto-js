@@ -1,2 +1,2 @@
 # lineage-crypto-js
-Nodejs wrapper for LineageCrypto C++ lib
+Nodejs wrapper for L2NextCrypto C++ lib
