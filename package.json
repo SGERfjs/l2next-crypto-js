@@ -4,6 +4,7 @@
   "description": "Node.js wrapper for L2NextCrypto C++ library",
   "main": "index.js",
   "scripts": {
+    "test": "node ./test.js",
     "install": "npm run compile",
     "compile": "cmake-js compile"
   },

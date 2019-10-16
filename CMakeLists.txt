@@ -23,12 +23,12 @@ include(${CMAKE_ROOT}/Modules/ExternalProject.cmake)
 project(L2NextCryptoJS)
 
 # Set variables.
-set(LIB_NAME L2NextCrypto.lib)
+set(L2NEXT_CRYPTO_LIB L2NextCrypto.lib)
 
 # Add L2NextCrypto dependency
 ExternalProject_Add(L2NextCrypto
   GIT_REPOSITORY https://github.com/ThunderstormPro/l2next-crypto.git
-  GIT_TAG v.0.1.1
+  GIT_TAG core/feat-redesign_public_api
   PREFIX ${CMAKE_CURRENT_BINARY_DIR}/L2NextCrypto
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   TMP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/External/tmp/L2NextCrypto
@@ -48,14 +48,21 @@ file(GLOB_RECURSE SOURCE_FILES "Source/*.cpp" "Source/*.h")
 # Build a static cmake-js library sample.
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${CMAKE_JS_SRC})
 
+# Add dependencies.
+add_dependencies(${PROJECT_NAME} L2NextCrypto)
+
 # Gives our library file a .node extension without any "lib" prefix
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 
-# Essential include files to build a node addon.
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_JS_INC})
-
 # Include L2NextCrypto.
-include_directories(${PROJECT_NAME} "${INSTALL_DIR}/include" "${INSTALL_DIR}/bin")
+target_include_directories(${PROJECT_NAME} PUBLIC "${INSTALL_DIR}/include" "${INSTALL_DIR}/lib")
+
+# Essential include files to build a node addon.
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_JS_INC})
 
 # Essential library files to link to a node addon.
-target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB}) 
+target_link_libraries(${PROJECT_NAME} PUBLIC ${CMAKE_JS_LIB})
+
+# Link L2NextCrypto lib.
+target_link_libraries(${PROJECT_NAME} PUBLIC "${INSTALL_DIR}/lib/${L2NEXT_CRYPTO_LIB}") 
+
